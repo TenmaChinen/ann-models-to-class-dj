@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block links %}
+<link rel="stylesheet" type="text/css" href="{% static 'converter/css/style.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'converter/css/drop-frame.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+<section>
+  <h1>Converter Index</h1>
+  <div id="drop-frame"></div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{% static 'converter/js/drop-frame.js' %}"></script>
+
+<script>
+  const dragDropFile = new DragDropFile("drop-frame");
+  dragDropFile.setDropCallback(onDropFileLoaded);
+
+  dragDropFile.dropContent.innerHTML += `<div id="box-file-h5" class="box-file">BOX A</div>`;
+  dragDropFile.dropContent.innerHTML += `<div id="box-file-json" class="box-file">BOX B</div>`;
+
+  const boxFileH5 = document.getElementById("box-file-h5");
+  const boxFileJson = document.getElementById("box-file-json");
+
+  function onDropFileLoaded(fileFormat, fileData) {
+    // console.log("DROPPED", fileFormat, fileData);
+    switch (fileFormat) {
+      case "h5":
+        boxFileH5.innerHTML = "H5 Loaded";
+        break;
+      case "json":
+        boxFileJson.innerHTML = "JSON Loaded";
+        break;
+    }
+  }
+
+</script>
+{% endblock %}

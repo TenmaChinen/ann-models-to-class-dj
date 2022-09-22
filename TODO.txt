@@ -1,0 +1,14 @@
+⚪🟢🟡🔴
+
+⚪ 1. HOME SECTION :
+
+  ⚪ 1.1. Introduction to Converter
+  ⚪ 1.2. SC Numpy Sample.
+  ⚪ 1.3. SC JavaScript Sample.
+
+⚪ 2. CONVERTER SECTION :
+  ⚪ 2.1. Drag Drop Areas ( H5 & JSON )
+
+⚪ 3. TUTORIAL SECTION :
+  ⚪ 3.1. SC of setup for Numpy
+  ⚪ 3.2. SC of setup for JavaScript

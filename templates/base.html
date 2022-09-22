@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Keras 2 Class</title>
+  <link rel="stylesheet" href="{% static 'base.css' %}">
+  {% block links %}
+  {% endblock %}
+</head>
+
+<body>
+  <nav>
+    {% with url=request.path %}
+    <a href="{% url 'home:index' %}" class="{% if url == '/' %}active{% endif %}">Home</a>
+    <a href="{% url 'converter:index' %}" class="{% if 'converter' in url %}active{% endif %}">Converter</a>
+    <a href="{% url 'tutorials:index' %}" class="{% if 'tutorials' in url %}active{% endif %}">Tutorials</a>
+    {% endwith %}
+  </nav>
+
+  <main>
+  {% block content %}
+  {% endblock %}
+</main>
+</body>
+
+{% block scripts %}
+{% endblock %}
+
+</html>

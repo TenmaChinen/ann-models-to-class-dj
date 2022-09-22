@@ -1,0 +1,27 @@
+section{
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.drop-content{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.box-file{
+  display: flex;
+  width: 200px;
+  height: 70%;
+  background-color: rgb(239, 239, 239);
+  box-shadow: 2px 2px 5px rgba(128, 128, 128, 0.5);
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
