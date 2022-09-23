@@ -1,7 +1,30 @@
+
+@font-face {
+  font-family: Roboto-Regular;
+  src: url("Roboto-Regular.ttf");
+}
+
 *{
+  font-family: Roboto-Regular;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+
+  -webkit-user-drag: none;
+  user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+:root{
+  --txt-primary-light : rgb(70, 70, 70);
 }
 
 

@@ -6,13 +6,27 @@
 <link rel="stylesheet" type="text/css" href="{% static 'converter/css/drop-frame.css' %}">
 {% endblock %}
 
-
 {% block content %}
 
 <section>
-  <h1>Converter Index</h1>
+  <form id="form-converter" method="post" enctype="Multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="fileH5" required hidden>
+    <input type="file" name="fileJson" hidden>
+    <label>Convert Keras Model to</label>
+    <select name="lang">
+      <option value="0">Python</option>
+      <option value="1">JavaScript</option>
+    </select>
+  </form>
+  
   <div id="drop-frame"></div>
-  <span id="btn-download">Download Model</span>
+
+  <div class="box-tools">
+    <span id="btn-convert" class="btn-primary">Convert Model</span>
+    <a id="btn-download" class="btn-primary">Download Model</a>
+    <span id="btn-restart" class="btn-primary">Restart</span>
+  </div>
 
 </section>
 {% endblock %}
@@ -20,6 +34,11 @@
 {% block scripts %}
 <script src="{% static 'converter/js/drop-frame.js' %}"></script>
 <script src="{% static 'converter/js/downloader.js' %}"></script>
+<script src="{% static 'converter/js/callbacks.js' %}"></script>
+<script src="{% static 'converter/js/box-tools.js' %}"></script>
+<script src="{% static 'converter/js/box-file.js' %}"></script>
+<script src="{% static 'converter/js/requests.js' %}"></script>
+<script src="{% static 'converter/js/form.js' %}"></script>
 
 <script>
   const dragDropFile = new DragDropFile("drop-frame");
@@ -27,21 +46,11 @@
 
   dragDropFile.dropContent.innerHTML += `{% include "converter/box_file.html" with id="box-file-h5" type="H5" %}`;
   dragDropFile.dropContent.innerHTML += `{% include "converter/box_file.html" with id="box-file-json" type="JSON" %}`;
-  
-  const boxFileH5 = document.getElementById("box-file-h5");
-  const boxFileJson = document.getElementById("box-file-json");
 
-  function onDropFileLoaded(fileFormat, fileData) {
-    // console.log("DROPPED", fileFormat, fileData);
-    switch (fileFormat) {
-      case "h5":
-        boxFileH5.innerHTML = "H5 Loaded";
-        break;
-      case "json":
-        boxFileJson.innerHTML = "JSON Loaded";
-        break;
-    }
-  }
+  const boxFileH5Obj = new BoxFile("box-file-h5");
+  const boxFileJsonObj = new BoxFile("box-file-json");
+
+  // setDownloadContent("Hello World");  
 
 </script>
 {% endblock %}

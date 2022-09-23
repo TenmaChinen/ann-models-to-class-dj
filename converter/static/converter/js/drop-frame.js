@@ -56,19 +56,24 @@ class DragDropFile {
       fileFormat = file.name.split(".").at(-1);
 
       if (fileFormat.match(PATTERN_ALLOWED_FORMATS)) {
-        fileReader = new FileReader();
-        fileReader.fileFormat = fileFormat;
-        fileReader.addEventListener("load", this);
-        fileReader.readAsDataURL(file);
+
+        this.dropCallback(file,fileFormat);
+        // fileReader = new FileReader();
+        // fileReader.fileFormat = fileFormat;
+        // fileReader.fileName = file.name;
+        // fileReader.addEventListener("load", this);
+        // fileReader.readAsDataURL(file);
       }
     }
   }
 
   onFileLoaded(event) {
     if (this.dropCallback) {
-      const FILE_FORMAT = event.target.fileFormat;
-      const FILE_DATA = event.target.result;
-      this.dropCallback(FILE_FORMAT,FILE_DATA);
+      const fileReader = event.target;
+      const fileFormat = fileReader.fileFormat;
+      const fileName = fileReader.fileName;
+      const fileData = fileReader.result;
+      this.dropCallback(fileName,fileFormat,fileData);
     }
   }
 

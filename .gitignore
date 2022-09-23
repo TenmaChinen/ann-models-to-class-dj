@@ -177,7 +177,8 @@ atlassian-ide-plugin.xml
 
 # Python # 
 *.py[cod] 
-*py.class 
+*py.class
+__pycache__/
 
 # Distribution / packaging 
 .Python build/ 
@@ -265,3 +266,7 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+
+# JUPYTER
+.ipynb_checkpoints/
